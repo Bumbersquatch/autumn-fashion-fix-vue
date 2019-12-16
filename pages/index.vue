@@ -212,8 +212,8 @@ export default {
   mounted () {
     const _this = this
     this.fetchPosts(this.page, this.numPosts)
-    // this.$redrawVueMasonry('postList')
     this.$Lazyload.$on('loaded', function () {
+       _this.$redrawVueMasonry()
       setTimeout(() => {
         _this.$redrawVueMasonry()
       }, 500)
