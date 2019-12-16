@@ -63,6 +63,7 @@
                         class="card-img-top img-fluid"
                         :data-src="post.item_data.link + 'media/?size=l'"
                         :alt="post.item_name"
+                        :data-loading="loadingIcon"
                       >
                     </div>
                   </a>
@@ -90,6 +91,7 @@
                         class="card-img-top img-fluid"
                         :data-src="'https://placeimg.com/640/480/people'"
                         :alt="post.item_name"
+                        :data-loading="loadingIcon"
                       >
                     </div>
                   </a>
@@ -150,11 +152,13 @@ import axios from 'axios'
 import moment from 'moment'
 import Logo from '~/components/Logo.vue'
 import Countdown from '~/components/Countdown.vue'
+import LoadingIcon from '@/assets/images/loading.svg'
 
 export default {
   components: {
     Logo,
-    Countdown
+    Countdown,
+    //LoadingIcon
   },
   data () {
     return {
@@ -165,6 +169,7 @@ export default {
       filter: null,
       isLoading: false,
       disableButtons: false,
+      loadingIcon: LoadingIcon,
       filterButtons: [
         {
           name: 'aff',
@@ -209,7 +214,9 @@ export default {
     this.fetchPosts(this.page, this.numPosts)
     // this.$redrawVueMasonry('postList')
     this.$Lazyload.$on('loaded', function () {
-      _this.$redrawVueMasonry()
+      setTimeout(() => {
+        _this.$redrawVueMasonry()
+      }, 500)
     })
   },
   methods: {
@@ -217,6 +224,7 @@ export default {
       const _this = this
       setTimeout(() => {
         _this.disableButtons = false
+        _this.$redrawVueMasonry()
       }, 500)
     },
     fetchPosts (page, numPosts) {

@@ -100,7 +100,10 @@ export default {
     if(this.$refs.clockItem) {
       this.diameter = this.$refs.clockItem ? this.$refs.clockItem.offsetWidth : 0
       this.cdidiameter = this.diameter / 2
-      this.loaded = true
+      setTimeout(() => {
+        this.loaded = true
+      }, 1000)
+      
     }
     const then = moment('23-09-2020', 'DD-MM-YYYY')
     setInterval(() => {
