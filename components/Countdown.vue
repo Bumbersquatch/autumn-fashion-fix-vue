@@ -102,8 +102,7 @@ export default {
       this.cdidiameter = this.diameter / 2
       this.loaded = true
     }
-    console.log(this.diameter)
-    const then = moment('09-23-2020')
+    const then = moment('23-09-2020', 'DD-MM-YYYY')
     setInterval(() => {
       const now = moment()
       const countdown = moment(then - now)
