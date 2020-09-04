@@ -19,7 +19,7 @@
     "bootstrap-vue": "^2.0.0",
     "masonry": "^0.0.2",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.0.0",
     "nuxt-svg-loader": "^1.0.1",
     "sass-loader": "^8.0.0",
